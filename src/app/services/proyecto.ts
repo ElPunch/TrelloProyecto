@@ -7,7 +7,7 @@ import { IProyecto } from './interfaces/iproyecto';
   providedIn: 'root'
 })
 export class Proyecto {
-  private apiUrl = 'http://localhost:5000/proyectos';
+  private apiUrl = 'http://http://127.0.0.1:5000/proyectos';
 
   constructor(private http: HttpClient) {}
 
