@@ -1,1 +1,13 @@
-<p>crear-tarea works!</p>
+<h2>Crear Tarea</h2>
+<form [formGroup]="formTarea" (ngSubmit)="onSubmit()">
+  <app-input-text formControlName="titulo" placeholder="Título de la tarea"></app-input-text>
+  <app-input-text formControlName="descripcion" placeholder="Descripción"></app-input-text>
+
+  <label>Proyecto:</label>
+  <select formControlName="proyecto_id">
+    <option *ngFor="let proyecto of proyectos" [value]="proyecto.id">{{ proyecto.nombre }}</option>
+  </select>
+
+  <app-boton-submit text="Crear Tarea"></app-boton-submit>
+</form>
+<p *ngIf="error" style="color:red;">{{ error }}</p>

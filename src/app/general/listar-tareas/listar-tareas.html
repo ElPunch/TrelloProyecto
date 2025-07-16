@@ -1,1 +1,4 @@
-<p>listar-tareas works!</p>
+<h2>Lista de Tareas</h2>
+<div *ngFor="let tarea of tareas">
+  <app-card-tarea [tarea]="tarea"></app-card-tarea>
+</div>

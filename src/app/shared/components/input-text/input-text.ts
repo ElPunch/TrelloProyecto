@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-input-text',
@@ -7,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './input-text.css'
 })
 export class InputText {
-
+  @input()() formControl!: FormControl;
+  @input()() placeholder: string = '';
 }

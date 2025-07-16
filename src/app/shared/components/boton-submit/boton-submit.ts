@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-boton-submit',
@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './boton-submit.css'
 })
 export class BotonSubmit {
-
+  @input()() text: string = 'Enviar';
 }
