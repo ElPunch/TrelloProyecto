@@ -7,4 +7,5 @@ export interface ITarea {
   fecha_vencimiento: string;
   categoria: string;
   estatus: string;
+  proyecto_id: number;
 }
