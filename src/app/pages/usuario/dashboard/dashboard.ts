@@ -8,15 +8,23 @@ import { IProyecto } from '../../../services/interfaces/iproyecto';
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
-export class Dashboard {
+export class Dashboard implements OnInit{
   proyectos: IProyecto[] = [];
 
   constructor(private proyectoService: Proyecto) {}
 
   ngOnInit(): void {
-    this.proyectoService.getProyectos().subscribe({
-      next: data => this.proyectos = data.proyectos,
-      error: err => console.error(err)
+    const token = localStorage.getItem('token');
+
+  if (token) {
+    this.proyectoService.listarProyectos(token).subscribe({
+      next: (data: { proyectos: IProyecto[] }) => {
+        this.proyectos = data.proyectos;
+      },
+      error: (err: any) => console.error('Error al obtener proyectos:', err)
     });
+  } else {
+    console.error('Token no encontrado');
   }
+}
 }

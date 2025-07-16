@@ -24,12 +24,20 @@ export class CrearProyecto {
     });
   }
 
-  onSubmit() {
-    if (this.formProyecto.valid) {
-      this.proyectoService.postProyecto(this.formProyecto.value).subscribe({
+  onSubmit(): void {
+  if (this.formProyecto.valid) {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const nombre = this.formProyecto.value.nombre;
+      this.proyectoService.crearProyecto(nombre, token).subscribe({
         next: () => this.router.navigate(['/usuario/dashboard']),
-        error: err => this.error = err.error?.error || 'Error al crear proyecto'
+        error: (err: any) => {
+          this.error = err.error?.error || 'Error al crear proyecto';
+        }
       });
+    } else {
+      this.error = 'Token no disponible';
     }
   }
+}
 }
