@@ -7,7 +7,7 @@ import { IUsuario } from './interfaces/iusuario';
   providedIn: 'root'
 })
 export class Usuario {
-  private apiUrl = 'http://localhost:5000/perfil';
+  private apiUrl = 'http://127.0.0.1:5000/perfil';
 
   constructor(private http: HttpClient) {}
 
