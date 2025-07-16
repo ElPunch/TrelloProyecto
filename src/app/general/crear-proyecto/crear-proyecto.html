@@ -1,1 +1,7 @@
-<p>crear-proyecto works!</p>
+<h2>Crear Proyecto</h2>
+<form [formGroup]="formProyecto" (ngSubmit)="onSubmit()">
+  <app-input-text formControlName="nombre" placeholder="Nombre del Proyecto"></app-input-text>
+  <app-input-text formControlName="descripcion" placeholder="Descripción"></app-input-text>
+  <app-boton-submit text="Crear Proyecto"></app-boton-submit>
+</form>
+<p *ngIf="error" style="color:red;">{{ error }}</p>

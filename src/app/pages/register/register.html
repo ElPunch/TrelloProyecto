@@ -1,1 +1,8 @@
-<p>register works!</p>
+<h2>Registro</h2>
+<form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+  <app-input-text formControlName="nombre" placeholder="Nombre"></app-input-text>
+  <app-input-text formControlName="email" placeholder="Email"></app-input-text>
+  <app-input-text type="password" formControlName="contrasena" placeholder="Contraseña"></app-input-text>
+  <app-boton-submit text="Registrarse"></app-boton-submit>
+</form>
+<p *ngIf="error" style="color:red;">{{ error }}</p>

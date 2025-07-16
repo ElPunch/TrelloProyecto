@@ -1,1 +1,6 @@
-<p>listar-proyectos works!</p>
+<h2>Lista de Proyectos</h2>
+<ul>
+  <li *ngFor="let proyecto of proyectos">
+    {{ proyecto.nombre }} - {{ proyecto.descripcion }}
+  </li>
+</ul>
