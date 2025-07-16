@@ -4,4 +4,6 @@ export interface IUsuario {
   email: string;
   es_admin: boolean;
   fecha_registro?: string;
+  id_grupo: number;
+  id_usuario_creador: number;
 }

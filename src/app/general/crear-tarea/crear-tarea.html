@@ -5,7 +5,9 @@
 
   <label>Proyecto:</label>
   <select formControlName="proyecto_id">
-    <option *ngFor="let proyecto of proyectos" [value]="proyecto.id">{{ proyecto.nombre }}</option>
+    <option *ngFor="let proyecto of proyectos" [value]="proyecto.id_proyecto">
+      {{ proyecto.nombre }}
+    </option>
   </select>
 
   <app-boton-submit text="Crear Tarea"></app-boton-submit>

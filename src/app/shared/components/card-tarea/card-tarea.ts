@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ITarea } from '../../../services/interfaces/itarea';
 
 @Component({
@@ -8,5 +8,5 @@ import { ITarea } from '../../../services/interfaces/itarea';
   styleUrl: './card-tarea.css'
 })
 export class CardTarea {
-  @input()() tarea!: ITarea;
+  @Input() tarea!: ITarea;
 }
