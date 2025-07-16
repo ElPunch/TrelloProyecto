@@ -7,7 +7,7 @@ import { ITarea } from './interfaces/itarea';
   providedIn: 'root'
 })
 export class Tarea {
-  private apiUrl = 'http://localhost:5000/tareas';
+  private apiUrl = 'http://http://127.0.0.1:5000/tareas';
 
   constructor(private http: HttpClient) {}
 
