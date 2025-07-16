@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Auth } from '../../services/auth';
 import { Router } from '@angular/router';
+import { Usuario } from '../../services/usuario';
 
 @Component({
   selector: 'app-register',
@@ -13,9 +14,12 @@ export class Register {
    formRegister: FormGroup;
   error: string = '';
 
-  constructor(private fb: FormBuilder, private auth: Auth, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private usuarioService: Usuario,
+    private router: Router
+  ) {
     this.formRegister = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
       contrasena: ['', [Validators.required, Validators.minLength(6)]]
     });
@@ -23,9 +27,14 @@ export class Register {
 
   onSubmit() {
     if (this.formRegister.valid) {
-      this.auth.register(this.formRegister.value).subscribe({
-        next: () => this.router.navigate(['/login']),
-        error: err => this.error = err.error?.error || 'Error al registrarse'
+    const { email, contrasena } = this.formRegister.value;
+    this.usuarioService.register(email, contrasena).subscribe({
+      next: () => {
+        this.router.navigate(['/usuario/dashboard']); // redirige al dashboard
+      },
+      error: err => {
+        this.error = err.error?.error || 'Error al registrar';
+      }
       });
     }
   }
