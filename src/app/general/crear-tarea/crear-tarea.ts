@@ -26,24 +26,32 @@ export class CrearTarea implements OnInit{
     this.formTarea = this.fb.group({
       titulo: ['', Validators.required],
       descripcion: [''],
-      proyecto_id: ['', Validators.required]
+      proyecto_id: ['', Validators.required],
+      nombre_categoria: ['To Do'],
+      nombre_estatus: ['sin empezar']
     });
   }
 
   ngOnInit(): void {
-    this.proyectoService.getProyectos().subscribe({
-      next: data => this.proyectos = data.proyectos,
-      error: err => console.error(err)
-    });
-  }
-
-  onSubmit() {
-    if (this.formTarea.valid) {
-      this.tareaService.postTarea(this.formTarea.value).subscribe({
-        next: () => this.router.navigate(['/general/listar-tareas']),
-        error: err => this.error = err.error?.error || 'Error al crear tarea'
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.proyectoService.listarProyectos(token).subscribe({
+        next: (data: { proyectos: IProyecto[] }) => this.proyectos = data.proyectos,
+        error: (err: any) => console.error(err)
       });
     }
   }
 
+  onSubmit(): void {
+    if (this.formTarea.valid) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        this.tareaService.crearTarea(this.formTarea.value, token).subscribe({
+          next: () => this.router.navigate(['/general/listar-tareas']),
+          error: (err: any) =>
+            this.error = err.error?.error || 'Error al crear tarea'
+        });
+      }
+    }
+  }
 }

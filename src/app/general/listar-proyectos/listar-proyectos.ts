@@ -14,9 +14,12 @@ export class ListarProyectos implements OnInit{
   constructor(private proyectoService: Proyecto) {}
 
   ngOnInit(): void {
-    this.proyectoService.getProyectos().subscribe({
-      next: data => this.proyectos = data.proyectos,
-      error: err => console.error(err)
-    });
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.proyectoService.listarProyectos(token).subscribe({
+        next: (data: { proyectos: IProyecto[] }) => this.proyectos = data.proyectos,
+        error: (err: any) => console.error(err)
+      });
+    }
   }
 }
