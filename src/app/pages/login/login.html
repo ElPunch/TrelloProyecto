@@ -1,7 +1,8 @@
 <h2>Iniciar Sesión</h2>
 <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
-  <app-input-text formControlName="email" placeholder="Email"></app-input-text>
-  <app-input-text type="password" formControlName="contrasena" placeholder="Contraseña"></app-input-text>
+   <input type="email" formControlName="email" placeholder="Correo electrónico" />
+    <input type="password" formControlName="contrasena" placeholder="Contraseña" />
   <app-boton-submit text="Ingresar"></app-boton-submit>
 </form>
+<button routerLink="/register">¿No tienes cuenta? Regístrate aquí</button>
 <p *ngIf="error" style="color:red;">{{ error }}</p>
