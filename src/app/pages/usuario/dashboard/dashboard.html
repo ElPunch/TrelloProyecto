@@ -1,4 +1,40 @@
-<h2>Mis Proyectos</h2>
-<ul>
-  <li *ngFor="let proyecto of proyectos">{{ proyecto.nombre }}</li>
-</ul>
+<div class="dashboard-container">
+  <h2>Trello Clone</h2>
+
+  <div class="dashboard-actions">
+    <button (click)="mostrarFormulario('proyecto')" class="action-button">+ Crear Proyecto</button>
+    <button (click)="mostrarFormulario('tarea')" class="action-button">+ Crear Tarea</button>
+  </div>
+
+  <!-- Formularios desplegables -->
+  <div *ngIf="formVisible === 'proyecto'" class="form-section">
+    <app-crear-proyecto></app-crear-proyecto>
+  </div>
+
+  <div *ngIf="formVisible === 'tarea'" class="form-section">
+    <app-crear-tarea></app-crear-tarea>
+  </div>
+
+  <!-- Kanban Board -->
+  <div class="board">
+    <div class="column">
+      <h3>Por hacer</h3>
+      <!-- Aquí puedes agregar tareas con estado To Do -->
+    </div>
+
+    <div class="column">
+      <h3>En progreso</h3>
+      <!-- Aquí puedes agregar tareas con estado In Progress -->
+    </div>
+
+    <div class="column">
+      <h3>Arreglando</h3>
+      <!-- Aquí puedes agregar tareas con estado Hot Fix -->
+    </div>
+
+    <div class="column">
+      <h3>Hecho</h3>
+      <!-- Aquí puedes agregar tareas con estado Done -->
+    </div>
+  </div>
+</div>

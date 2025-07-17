@@ -10,6 +10,7 @@ import { IProyecto } from '../../../services/interfaces/iproyecto';
 })
 export class Dashboard implements OnInit{
   proyectos: IProyecto[] = [];
+  formVisible: 'proyecto' | 'tarea' | null = null;
 
   constructor(private proyectoService: Proyecto) {}
 
@@ -27,4 +28,8 @@ export class Dashboard implements OnInit{
     console.error('Token no encontrado');
   }
 }
+   mostrarFormulario(tipo: 'proyecto' | 'tarea') {
+    this.formVisible = this.formVisible === tipo ? null : tipo;
+  }
+
 }
