@@ -1,8 +1,22 @@
-<h2>Registro</h2>
-<form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
-  <app-input-text formControlName="nombre" placeholder="Nombre"></app-input-text>
-  <input type="email" formControlName="email" placeholder="Correo electrónico" />
-  <input type="password" formControlName="contrasena" placeholder="Contraseña" />
-  <app-boton-submit text="Registrarse"></app-boton-submit>
-</form>
-<p *ngIf="error" style="color:red;">{{ error }}</p>
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>Registro</h2>
+    <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" class="auth-form">
+      <input 
+        type="email" 
+        formControlName="email" 
+        placeholder="Correo electrónico"
+        class="auth-input" />
+      <input 
+        type="password" 
+        formControlName="contrasena" 
+        placeholder="Contraseña"
+        class="auth-input" />
+      <app-boton-submit [text]="'Registrarse'" class="auth-button"></app-boton-submit>
+    </form>
+    <button routerLink="/login" class="auth-link">
+      ¿Ya tienes cuenta? Inicia sesión aquí
+    </button>
+    <p *ngIf="error" class="error-message">{{ error }}</p>
+  </div>
+</div>

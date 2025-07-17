@@ -1,8 +1,22 @@
-<h2>Iniciar Sesión</h2>
-<form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
-   <input type="email" formControlName="email" placeholder="Correo electrónico" />
-    <input type="password" formControlName="contrasena" placeholder="Contraseña" />
-  <app-boton-submit text="Ingresar"></app-boton-submit>
-</form>
-<button routerLink="/register">¿No tienes cuenta? Regístrate aquí</button>
-<p *ngIf="error" style="color:red;">{{ error }}</p>
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>Iniciar Sesión</h2>
+    <form [formGroup]="formLogin" (ngSubmit)="onSubmit()" class="auth-form">
+      <input 
+        type="email" 
+        formControlName="email" 
+        placeholder="Correo electrónico"
+        class="auth-input" />
+      <input 
+        type="password" 
+        formControlName="contrasena" 
+        placeholder="Contraseña"
+        class="auth-input" />
+      <app-boton-submit text="Ingresar" class="auth-button"></app-boton-submit>
+    </form>
+    <button routerLink="/register" class="auth-link">
+      ¿No tienes cuenta? Regístrate aquí
+    </button>
+    <p *ngIf="error" class="error-message">{{ error }}</p>
+  </div>
+</div>
